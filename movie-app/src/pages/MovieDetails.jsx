@@ -1,7 +1,8 @@
+import React from 'react'
 import { useParams } from "react-router-dom";
 import { useFetchMovies } from "../hooks/useFetchMovies";
 
-export default function MovieDetails() {
+function MovieDetails() {
   const { id } = useParams();
   const { movies, loading } = useFetchMovies();
 
@@ -21,3 +22,4 @@ export default function MovieDetails() {
     </div>
   );
 }
+export default MovieDetails
