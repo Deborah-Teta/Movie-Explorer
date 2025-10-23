@@ -1,28 +1,45 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-function MovieCard({movie, toggleFavorite, favorites}) {
-    const isFav = favorites.find((m) => m.id === movie.id);
-    return(
-        <>
-          <div className="border p-2 rounded shadow hover:shadow-lg transition">
-            <Link to={`/movie/${movie.id}`}>
-            <img
-                src={movie.image?.medium}
-                alt={movie.name}
-                className="w-full h-48 object-cover"
-            />
-            </Link>
-            <h2 className="font-bold mt-2">{movie.name}</h2>
-            <button
-                onClick={() => toggleFavorite(movie)}
-                className={`mt-2 px-2 py-1 rounded ${isFav ? "bg-red-500 text-white" : "bg-gray-200"}`}
-      >
-                {isFav ? "Remove Favorite" : "Add to Favorites"}
-            </button>
-          </div>
-        
-        </>
+
+function MovieCard({movie, toggleFavorite, isFavorite}) {
+  const handleFavoriteClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleFavorite();
+  };
+  return(  
+    <div className="mx-auto bg-black rounded-lg shadow-md overflow-hidden md: max-w-2xl hover:shadow-lg transition">
+      <Link to={`/MovieDetails/${movie.id}`} className="flex grow">
+        <img 
+          src={movie.image} 
+          alt={movie.name}
+          className="w-full h-48 object-cover"
+        />
+        <div className="p-4 flex grow">
+          <h3 className="text-xl font-semibold mb-2 text-white">{movie.name}</h3>
+          <p className="text-gray-300 text-sm mb-3 line-clamp-2">{movie.summary}</p>
+          <span className="inline-block bg-amber-800 text-white px-2 py-1 rounded text-xs">
+            {movie.category}
+          </span>
+        </div>
+      </Link>
+      <div className="p-4">
+        <h3 className="text-xl font-semibold mb-2">{movie.name}</h3>
+        <p className="text-white text-sm mb-3">{movie.summary}</p>
+        <div className="flex justify-between items-center">
+          
+          <button 
+            onClick={handleFavoriteClick}
+            className="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-900 transition"
+          >
+            {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+          </button>
+        </div>
+      </div>
+    </div>
+
+
     )
 }
 export default MovieCard

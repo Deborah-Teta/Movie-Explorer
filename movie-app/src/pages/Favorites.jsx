@@ -1,9 +1,11 @@
 import React from 'react'
 import MovieCard from "../components/MovieCard";
-import { useFavorites } from "../hooks/useFavorites";
+import useFavorites  from "../hooks/useFavorites";
 
  function Favorites() {
   const { favorites, toggleFavorite } = useFavorites();
+
+  console.log("Favorites - favorites:", favorites);
 
   if (favorites.length === 0) return <p className="p-4">You have 0 favorite movies</p>;
 

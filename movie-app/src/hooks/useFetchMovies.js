@@ -7,9 +7,10 @@ function useFetchMovies() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate an API fetch delay (just for effect)
+    console.log("useFetchMovies: Starting to fetch movies");
     setTimeout(() => {
       setMovies(moviesData);
+      console.log("useFetchMovies: Movies data:", moviesData);
       setLoading(false);
     }, 500);
   }, []);

@@ -4,7 +4,7 @@ import homeImg from '../assets/pics/homeImg.png';
 
 function HeroSection (){
     return(
-        <section id='home' className='hero relative h-screen md:max-w-2xl overflow-hidden md: flex items-center justify-center mb-5'>
+        <section id='home' className='hero relative h-screen  overflow-hidden md: flex items-center justify-center mb-5'>
             <div className='hero-background absolute inset-0 z-0'>
                 <img 
                 src={homeImg}
