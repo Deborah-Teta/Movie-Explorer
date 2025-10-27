@@ -12,7 +12,7 @@ function Navbar() {
 
                 <Link to="/" className='text-amber-700 hover:text-amber-900 transition-colors font-bold'>Home</Link>
                 <Link to="/MovieDetails" className='text-amber-700 hover:text-amber-900 transition-colors font-bold'>MovieDetails</Link>
-                <Link to="/Favorites" className='text-amber-700 hover:text-amber-900 transition-colors font-bold'>Favorites</Link>
+                <Link to="/favorites" className='text-amber-700 hover:text-amber-900 transition-colors font-bold'>Favorites</Link>
                 
             </nav>
             </div>

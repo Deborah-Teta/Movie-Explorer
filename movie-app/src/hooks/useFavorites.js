@@ -6,7 +6,8 @@ import {useState, useEffect} from 'react'
 function useFavorites() {
   const [favorites, setFavorites] = useState([])
   useEffect(()=> {
-    const saved = JSON.parse(localStorage.getItem('favorites')) || []; setFavorites(saved)
+    const saved = JSON.parse(localStorage.getItem('favorites')) || []; 
+    setFavorites(saved)
   }, []);
   
   useEffect(()=> {

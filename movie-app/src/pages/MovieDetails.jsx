@@ -11,9 +11,14 @@ function MovieDetails() {
 
   console.log("MovieDetails - movies:", movies);
   console.log("MovieDetails - id:", id);
+  console.log("MovieDetails - id type:", typeof id);
+  console.log("MovieDetails - first movie id:", movies[0]?.id, "type:", typeof movies[0]?.id);
 
   if (loading) return <p className="p-4">Loading...</p>;
-  const movie = movies.find((m) => m.id === parseInt(id));
+  
+  // FIX: Compare as strings instead of converting to number
+  const movie = movies.find((m) => m.id.toString() === id);
+  
   if (!movie) return <p className="p-4">Movie not found</p>;
   const isFavorite = favorites.some(fav => fav.id === movie?.id);
 
@@ -59,4 +64,4 @@ function MovieDetails() {
   );
 }
 
-export default MovieDetails
+export default MovieDetails;

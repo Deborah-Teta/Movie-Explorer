@@ -12,13 +12,12 @@ function App () {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />}/>
-          <Route path='/MovieDetails' element={<MovieDetails />} />
-          <Route path='/Favorites' element={<Favorites />} />
+          
+          <Route path='/moviedetails/:id' element={<MovieDetails />} />
+          <Route path='/favorites' element={<Favorites />} />
         </Routes>
       </div>
-
     </Router>
   )
-
 }
 export default App
