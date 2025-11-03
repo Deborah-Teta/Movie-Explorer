@@ -6,7 +6,7 @@ function Favorites() {
   const { favorites, toggleFavorite } = useFavoritesContext(); // ← SAME instance
 
   if (favorites.length === 0) {
-    return <p className="p-4 text-white">You have 0 favorite movies</p>;
+    return <p className="p-4 text-black">You have 0 favorite movies</p>;
   }
 
   return (

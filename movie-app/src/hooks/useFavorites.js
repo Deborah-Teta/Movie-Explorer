@@ -7,13 +7,13 @@ function useFavorites() {
   // Load from localStorage on mount
   useEffect(() => {
   const saved = JSON.parse(localStorage.getItem('favorites')) || [];
-  console.log('Loaded from localStorage:', saved); // ← ADD THIS
+  console.log('Loaded from localStorage:', saved); 
   setFavorites(saved);
 }, []);
 
   // Save to localStorage whenever favorites change
   useEffect(() => {
-  console.log('Saving to localStorage:', favorites); // ← ADD THIS
+  console.log('Saving to localStorage:', favorites); 
   localStorage.setItem('favorites', JSON.stringify(favorites));
 }, [favorites]);
 
@@ -21,7 +21,7 @@ function useFavorites() {
     setFavorites((prevFavorites) => {
       const exists = prevFavorites.some((m) => m.id === movie.id);
       if (exists) {
-        return prevFavorites.filter((m) => m.id !== movie.id); // ← Fixed
+        return prevFavorites.filter((m) => m.id !== movie.id); 
       } else {
         return [...prevFavorites, movie];
       }
