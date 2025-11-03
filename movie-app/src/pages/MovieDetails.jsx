@@ -1,17 +1,12 @@
 import React from 'react'
 import { useParams, useNavigate } from "react-router-dom";
 import useFetchMovies  from "../hooks/useFetchMovies";
-import useFavorites from '../hooks/useFavorites';
 
 function MovieDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { movies, loading } = useFetchMovies();
-  const {favorites, toggleFavorite} = useFavorites();
-
-
-
-
+  
   console.log("MovieDetails - movies:", movies);
   console.log("MovieDetails - id:", id);
   console.log("MovieDetails - id type:", typeof id);

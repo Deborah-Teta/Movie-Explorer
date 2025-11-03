@@ -1,4 +1,3 @@
-
 import { createContext, useContext } from 'react';
 import useFavorites from '../hooks/useFavorites';
 

@@ -1,16 +1,15 @@
-// src/pages/Home.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/Hero';
 import SearchBar from '../components/SearchBar';
 import useFetchMovies from '../hooks/useFetchMovies';
 import MovieCard from '../components/MovieCard';
-import { useFavoritesContext } from '../context/FavoritesContext'; // ← NEW
+import { useFavoritesContext } from '../context/FavoritesContext';
 
 function Home() {
   const [search] = useState('');
   const { movies, loading } = useFetchMovies();
-  const { favorites, toggleFavorite } = useFavoritesContext(); // ← FROM CONTEXT
+  const { favorites, toggleFavorite } = useFavoritesContext(); 
 
   const filteredMovies = movies.filter(movie =>
     movie.name.toLowerCase().includes(search.toLowerCase()) ||
