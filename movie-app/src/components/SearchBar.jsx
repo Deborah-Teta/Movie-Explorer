@@ -1,13 +1,10 @@
-// SearchBar.js
 import React from 'react';
 
 function SearchBar({ search, setSearch }) {
   const handleSearch = (e) => {
-    e.preventDefault(); // Optional: prevent form submit if wrapped in form
-    // You can add API call or filtering logic here later
+    e.preventDefault(); 
     console.log('Searching for:', search);
   };
-
   return (
     <div className="flex gap-2 mb-6 max-w-md mx-auto">
       <input
