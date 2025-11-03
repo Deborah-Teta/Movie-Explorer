@@ -35,7 +35,7 @@ function Home() {
       <section className='py-20 bg-black'>
         <div className='container mx-auto px-4'>
           <SearchBar />
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-row  flex-wrap gap-8">
             {filteredMovies.map(movie => (
               <MovieCard
                 key={movie.id}
