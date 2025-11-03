@@ -66,7 +66,7 @@ function movies (){
     "rating": 8.8,
     "director": "Christopher Nolan"
   },
-   {
+  {
     "id": 7,
     "name": "The Dark Knight",
     "category": "Action",
@@ -88,10 +88,9 @@ function movies (){
   },
 ]
 
-
     return(
     moviesData
     )
 }
 
-export default movies
+export default movies;

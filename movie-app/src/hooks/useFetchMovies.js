@@ -1,6 +1,5 @@
-import React from 'react'
 import { useState, useEffect } from "react";
-import moviesData from "../data/movies.js";
+import moviesData from "../data/movies";
 
 function useFetchMovies() {
   const [movies, setMovies] = useState([]);
@@ -17,4 +16,5 @@ function useFetchMovies() {
 
   return { movies, loading };
 }
-export default useFetchMovies
+
+export default useFetchMovies;

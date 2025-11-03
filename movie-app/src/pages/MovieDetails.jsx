@@ -7,26 +7,27 @@ function MovieDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { movies, loading } = useFetchMovies();
-  const {favorites, toggleFavorite} = useFavorites()
+  const {favorites, toggleFavorite} = useFavorites();
+
+
+
 
   console.log("MovieDetails - movies:", movies);
   console.log("MovieDetails - id:", id);
   console.log("MovieDetails - id type:", typeof id);
   console.log("MovieDetails - first movie id:", movies[0]?.id, "type:", typeof movies[0]?.id);
 
-  if (loading) return <p className="p-4">Loading...</p>;
-  
-  // FIX: Compare as strings instead of converting to number
-  const movie = movies.find((m) => m.id.toString() === id);
-  
-  if (!movie) return <p className="p-4">Movie not found</p>;
-  const isFavorite = favorites.some(fav => fav.id === movie?.id);
+ if (loading) return <p className="p-4">Loading...</p>;
+
+const movie = movies.find((m) => m.id.toString() === id);
+
+if (!movie) return <p className="p-4">Movie not found</p>;
 
   return (
     <div  className="movie-details p-6 max-w-6xl mx-auto">
       <button 
         onClick={() => navigate(-1)} 
-        className="back-btn bg-gray-600 text-white px-4 py-2 rounded mb-6 hover:bg-gray-700 transition"
+        className="back-btn bg-gray-200 text-black px-4 py-2 rounded mb-6 hover:bg-gray-500 transition"
       >
         ← Back
       </button>
@@ -40,24 +41,13 @@ function MovieDetails() {
         
         <div className=" flex-1 text-white">
           <h1 className="text-3xl font-bold mb-4">{movie.name}</h1>
-          <div className="space-y-3">
+          <div className="space-y-3 text-black">
             <p><strong className="text-amber-800">Category:</strong> {movie.category}</p>
             <p><strong className="text-amber-800">Year:</strong> {movie.year}</p>
             <p><strong className="text-amber-800">Rating:</strong> ⭐ {movie.rating}/10</p>
             <p><strong className="text-amber-800">Director:</strong> {movie.director}</p>
             <p><strong className="text-amber-800">Summary:</strong> {movie.summary}</p>
           </div>
-          
-          <button 
-            onClick={() => toggleFavorite(movie)}
-            className={`mt-6 px-6 py-3 rounded-lg transition ${
-              isFavorite 
-                ? 'bg-amber-700 hover:bg-amber-900'
-                : 'bg-red-600 hover:bg-red-700' 
-            } text-white font-semibold`}
-          >
-            {isFavorite ? '❤️ Remove from Favorites' : '🤍 Add to Favorites'}
-          </button>
         </div>
       </div>
     </div>
