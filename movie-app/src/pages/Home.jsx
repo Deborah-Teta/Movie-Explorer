@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import HeroSection from '../components/Hero';
 import SearchBar from '../components/SearchBar';
 import useFetchMovies from '../hooks/useFetchMovies';
@@ -7,7 +6,7 @@ import MovieCard from '../components/MovieCard';
 import { useFavoritesContext } from '../context/FavoritesContext';
 
 function Home() {
-  const [search] = useState('');
+  const [search, setSearch] = useState('');
   const { movies, loading } = useFetchMovies();
   const { favorites, toggleFavorite } = useFavoritesContext(); 
 
@@ -33,7 +32,7 @@ function Home() {
       <HeroSection />
       <section className='py-20 bg-black'>
         <div className='container mx-auto px-4'>
-          <SearchBar />
+          <SearchBar search={search} setSearch={setSearch} />
           <div className="flex flex-row  flex-wrap gap-8">
             {filteredMovies.map(movie => (
               <MovieCard

@@ -1,21 +1,30 @@
-import React from 'react'
+// SearchBar.js
+import React from 'react';
 
-function SearchBar ({ search, setSearch }) {
-    return(
-        <>
-        <button onClick= {search}
-            className="bg-gray-800 text-amber-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-900 transition">
-                                Search
-        </button>
-        <input
+function SearchBar({ search, setSearch }) {
+  const handleSearch = (e) => {
+    e.preventDefault(); // Optional: prevent form submit if wrapped in form
+    // You can add API call or filtering logic here later
+    console.log('Searching for:', search);
+  };
+
+  return (
+    <div className="flex gap-2 mb-6 max-w-md mx-auto">
+      <input
         type="text"
         placeholder="Search movies..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="border p-2 rounded md-w-2xl mb-4 bg-gray-200"
-         />
-        
-        </>
-    )
+        className="flex-1 p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-600"
+      />
+      <button
+        onClick={handleSearch}
+        className="bg-amber-600 text-black px-6 py-3 rounded-lg font-semibold hover:bg-amber-500 transition"
+      >
+        Search
+      </button>
+    </div>
+  );
 }
-export default SearchBar
+
+export default SearchBar;

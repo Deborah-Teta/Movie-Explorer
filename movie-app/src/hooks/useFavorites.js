@@ -4,14 +4,12 @@ import { useState, useEffect } from 'react';
 function useFavorites() {
   const [favorites, setFavorites] = useState([]);
 
-  // Load from localStorage on mount
   useEffect(() => {
   const saved = JSON.parse(localStorage.getItem('favorites')) || [];
   console.log('Loaded from localStorage:', saved); 
   setFavorites(saved);
 }, []);
 
-  // Save to localStorage whenever favorites change
   useEffect(() => {
   console.log('Saving to localStorage:', favorites); 
   localStorage.setItem('favorites', JSON.stringify(favorites));
