@@ -5,7 +5,7 @@ function MovieCard({movie, toggleFavorite, isFavorite}) {
   const handleFavoriteClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    toggleFavorite(movie.id);
+    toggleFavorite(movie);
   };
 
   return(  

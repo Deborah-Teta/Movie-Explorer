@@ -1,28 +1,34 @@
-
-
-import React from 'react'
-import {useState, useEffect} from 'react'
+import React from 'react';
+import { useState, useEffect } from 'react';
 
 function useFavorites() {
-  const [favorites, setFavorites] = useState([])
-  useEffect(()=> {
-    const saved = JSON.parse(localStorage.getItem('favorites')) || []; 
-    setFavorites(saved)
-  }, []);
-  
-  useEffect(()=> {
-    localStorage.setItem('favorites', JSON.stringify(favorites))
-  }, [favorites])
+  const [favorites, setFavorites] = useState([]);
+
+  // Load from localStorage on mount
+  useEffect(() => {
+  const saved = JSON.parse(localStorage.getItem('favorites')) || [];
+  console.log('Loaded from localStorage:', saved); // ← ADD THIS
+  setFavorites(saved);
+}, []);
+
+  // Save to localStorage whenever favorites change
+  useEffect(() => {
+  console.log('Saving to localStorage:', favorites); // ← ADD THIS
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+}, [favorites]);
+
   const toggleFavorite = (movie) => {
-    if (favorites.find((m)=>m.id === movie.id)){
-      setFavorites(favorites.filter((m)=>m.id !==movie));
-    }
-    else{
-      setFavorites([...favorites, movie]);
-    };
-    
-}
-return{favorites, toggleFavorite };
+    setFavorites((prevFavorites) => {
+      const exists = prevFavorites.some((m) => m.id === movie.id);
+      if (exists) {
+        return prevFavorites.filter((m) => m.id !== movie.id); // ← Fixed
+      } else {
+        return [...prevFavorites, movie];
+      }
+    });
+  };
+
+  return { favorites, toggleFavorite };
 }
 
-export default useFavorites
+export default useFavorites;

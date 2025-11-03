@@ -1,13 +1,13 @@
-import React from 'react'
+// src/pages/Favorites.jsx
+import { useFavoritesContext } from '../context/FavoritesContext'; // ← NEW
 import MovieCard from "../components/MovieCard";
-import useFavorites  from "../hooks/useFavorites";
 
 function Favorites() {
-  const { favorites, toggleFavorite } = useFavorites();
+  const { favorites, toggleFavorite } = useFavoritesContext(); // ← SAME instance
 
-  console.log("Favorites - favorites:", favorites);
-
-  if (favorites.length === 0) return <p className="p-4 text-white">You have 0 favorite movies</p>;
+  if (favorites.length === 0) {
+    return <p className="p-4 text-white">You have 0 favorite movies</p>;
+  }
 
   return (
     <div className="p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -16,10 +16,11 @@ function Favorites() {
           key={movie.id}
           movie={movie}
           toggleFavorite={() => toggleFavorite(movie)}
-          isFavorite={true} // Always true in favorites page
+          isFavorite={true}
         />
       ))}
     </div>
   );
 }
+
 export default Favorites;
