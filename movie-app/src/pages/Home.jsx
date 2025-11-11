@@ -9,7 +9,7 @@ function Home() {
   const [search, setSearch] = useState('');
   const { movies, loading } = useFetchMovies();
   const { favorites, toggleFavorite } = useFavoritesContext(); 
-
+''
   const filteredMovies = movies.filter(movie =>
     movie.name.toLowerCase().includes(search.toLowerCase()) ||
     movie.category.toLowerCase().includes(search.toLowerCase())
